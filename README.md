@@ -36,4 +36,4 @@ app.listen(port, function () {
     console.log( 'running on port ' + port );
 });
 ```
-6. node app.js and open localhost:3000 from browser
+6. run node app.js and open localhost:3000 from browser
