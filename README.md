@@ -30,7 +30,9 @@ cd to nodeRestfulWebAPIJonMills
 3. set port
    var port = process.env.PORT || 3000;
 
-4. create route /  return comment
+4. create root route /  return comment, 
+   second parameter is callback with rec and res args
+   res.send sends back a string of text
    app.get('/', function (req, res){
        res.send('welcome to my API!');
    });
@@ -41,3 +43,25 @@ cd to nodeRestfulWebAPIJonMills
    });
 ```
 6. run node app.js and open localhost:3000 from browser
+
+Getting Data
+1. Create a router named bookRouter
+   modify app.js by adding the following above app.get('/'.....
+```
+1. create bookRouter instance
+   var bookRouter =  express.Router();
+
+2. setup the book router
+   res.json(responseJson) returns a json object
+   bookRouter.route('/Books')
+       .get(function(req,res){
+           var responseJson = {hello: "This is my app"};
+   
+           res.json(responseJson)
+       });
+   
+3.  sets up base for our api
+   app.use( '/api', bookRouter);
+
+```
+4. run node app.js open localhost:3000/api/books
