@@ -1,0 +1,19 @@
+{
+  "name": "bookapi",
+  "version": "1.0.0",
+  "description": "Jonathan Mills course on Rest with node and express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidMarcoGonzales/nodeRestfulWebAPIJonMills.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidMarcoGonzales/nodeRestfulWebAPIJonMills/issues"
+  },
+  "homepage": "https://github.com/DavidMarcoGonzales/nodeRestfulWebAPIJonMills#readme"
+}
