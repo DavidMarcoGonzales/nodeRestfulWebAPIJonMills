@@ -45,6 +45,7 @@ cd to nodeRestfulWebAPIJonMills
 6. run node app.js and open localhost:3000 from browser
 
 Getting Data
+
 1. Create a router named bookRouter
    modify app.js by adding the following above app.get('/'.....
 ```
@@ -60,8 +61,9 @@ Getting Data
            res.json(responseJson)
        });
    
-3.  sets up base for our api
+3. sets up base for our api
+   and add bookrouter middleware to server
    app.use( '/api', bookRouter);
 
 ```
-4. run node app.js open localhost:3000/api/books
+2. run node app.js open localhost:3000/api/books
