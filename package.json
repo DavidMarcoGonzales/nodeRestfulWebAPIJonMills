@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DavidMarcoGonzales/nodeRestfulWebAPIJonMills/issues"
   },
-  "homepage": "https://github.com/DavidMarcoGonzales/nodeRestfulWebAPIJonMills#readme"
+  "homepage": "https://github.com/DavidMarcoGonzales/nodeRestfulWebAPIJonMills#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
 }
