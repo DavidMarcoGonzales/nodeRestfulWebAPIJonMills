@@ -20,22 +20,20 @@ cd to nodeRestfulWebAPIJonMills
 4. create app.js
 
 5. add the following
-
-   javascript var express = require('express');
 ```
-   app = express();
+var express = require('express');
 
-   var port = process.env.PORT || 3000;
+app = express();
 
-   app.get('/', function (req, res){
-       res.send('welcome to my API!');
+var port = process.env.PORT || 3000;
 
-   });```
+app.get('/', function (req, res){
+    res.send('welcome to my API!');
 
-   listen on port and send a message
-   app.listen(port, function () {
-       console.log( 'running on port ' + port );
-   });
-   ```
+});
 
+app.listen(port, function () {
+    console.log( 'running on port ' + port );
+});
+```
 6. node app.js and open localhost:3000 from browser
