@@ -94,6 +94,9 @@ Install mongoose
 
 ```
    var db = mongoose.connect('mongodb://localhost/bookAPI');
+or
+   var db = mongoose.connect('mongodb://heroku_hjnzjw31:c7gafe2hhteac3khq7cccece95@ds049925.mlab.com:49925/heroku_hjnzjw3x');
+
 ```
 
 
@@ -115,21 +118,31 @@ Create First Model
        genera: {type: 'string'},
        read: {type: Boolean, default: false}
    })
-2. Create a mode named 'Book' 
+2. Create a model named 'Book' 
    From the bookSchema, 
+   We are gonig to load Book model into mongoose
    export the 'Book' model
    modeule.exports = mongoose.model('Book', bookSchema)
 ```
 
 Back to app.js
-   inside bookRoute.route('/Book').get(function(req,res){...
+   inside 
+
+```
+   bookRoute.route('/Book').get(function(req,res){...
+```   
+
    add the following
-   
+
+```
    Book.find(function(err,books){
-   if (err){
-   else
-     res.json(books);
-   })
+       if (err){
+           console.log(err)
+       }
+       else
+           res.json(books);
+       })
+```   
    
 C:\Program Files\MongoDB\Server\3.4\bin> & .\mongod.exe
    starts mongod.exe server

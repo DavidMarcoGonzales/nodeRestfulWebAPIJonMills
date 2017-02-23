@@ -5,7 +5,8 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://localhost/bookAPI')
+//var db = mongoose.connect('mongodb://localhost/bookAPI')
+var db = mongoose.connect('mongodb://heroku_hjnzjw31:c7gafe2hhteac3khq7cccece95@ds049925.mlab.com:49925/heroku_hjnzjw31');
 var Book = require('./models/bookModel');
 
 app = express();
@@ -16,9 +17,15 @@ var bookRoute =  express.Router();
 
 bookRoute.route('/Books')
     .get(function(req,res){
-        Book.find(function(err,books){
+
+        var query = {};
+
+        if (req.query.genre){
+            query.genre = req.query.genre;
+        }
+        Book.find(query, function(err,books){
             if (err){
-                console.log(err)
+                res.status(500).send(err);
             }
             else
                 res.json(books);
