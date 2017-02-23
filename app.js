@@ -3,21 +3,29 @@
  */
 
 var express = require('express');
+var mongoose = require('mongoose');
+
+var db = mongoose.connect('mongodb://localhost/bookAPI')
+var Book = require('./models/bookModel');
 
 app = express();
 
 var port = process.env.PORT || 3000;
 
-var bookRouter =  express.Router();
+var bookRoute =  express.Router();
 
-bookRouter.route('/Books')
+bookRoute.route('/Books')
     .get(function(req,res){
-        var responseJson = {hello: "This is my app"};
-
-        res.json(responseJson)
+        Book.find(function(err,books){
+            if (err){
+                console.log(err)
+            }
+            else
+                res.json(books);
+            })
     });
 
-app.use( '/api', bookRouter);
+app.use( '/api', bookRoute);
 
 app.get('/', function (req, res){
     res.send('welcome to my API!');

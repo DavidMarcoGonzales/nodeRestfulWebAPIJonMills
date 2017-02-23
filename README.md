@@ -49,21 +49,92 @@ Getting Data
 1. Create a router named bookRouter
    modify app.js by adding the following above app.get('/'.....
 ```
-1. create bookRouter instance
-   var bookRouter =  express.Router();
+   1. create bookRouter instance
+      var bookRoute =  express.Router();
 
-2. setup the book router
-   res.json(responseJson) returns a json object
-   bookRouter.route('/Books')
-       .get(function(req,res){
+   2. setup the book router
+      res.json(responseJson) returns a json object
+      bookRoute.route('/Books')
+         .get(function(req,res){
            var responseJson = {hello: "This is my app"};
    
            res.json(responseJson)
-       });
+          });
    
-3. sets up base for our api
-   and add bookrouter middleware to server
-   app.use( '/api', bookRouter);
+   3. sets up base for our api
+      and add bookrouter middleware to server
+      app.use( '/api', bookRoute);
 
 ```
 2. run node app.js open localhost:3000/api/books
+
+Install (complete) mongoose from https://www.mongodb.com/
+1. Mongoose 
+   connects to our mongodb
+   creates data models
+   
+Install Robomongo from https://robomongo.org/
+
+Install mongoose
+1. npm install --save mongoose
+   
+   (mongoose orm like entity framework)
+
+2. require mongoose
+
+```
+   var mongoose = require('mongoose');
+```
+
+3. have mongoose connect to mongo database
+   our connection string = mongodb://bookAPI
+   creates collection on mongodb if it doesn't exist
+   holds that collection while server is running
+   connects to that collection bookAPI on our local mongo server
+
+```
+   var db = mongoose.connect('mongodb://localhost/bookAPI');
+```
+
+
+Create First Model
+1. create bookModel file.
+```
+   var Book = require('./models/bookModel');
+```
+
+2. in bookModel create the model from the json bookSchema 
+```
+   var mongoose = require('mongoose');
+   var Schema = mongoose.Schema();
+
+1. Create a Schema
+   var bookSchema = new Schema({
+       title: {type: 'string'},
+       author: {type: 'string'},
+       genera: {type: 'string'},
+       read: {type: Boolean, default: false}
+   })
+2. Create a mode named 'Book' 
+   From the bookSchema, 
+   export the 'Book' model
+   modeule.exports = mongoose.model('Book', bookSchema)
+```
+
+Back to app.js
+   inside bookRoute.route('/Book').get(function(req,res){...
+   add the following
+   
+   Book.find(function(err,books){
+   if (err){
+   else
+     res.json(books);
+   })
+   
+C:\Program Files\MongoDB\Server\3.4\bin> & .\mongod.exe
+   starts mongod.exe server
+node app.js
+   starts node
+localhost:3000/api/books
+   calls books api
+   books.find queries mongodb to get collection of books
